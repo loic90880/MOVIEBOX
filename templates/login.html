@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Login - MOVIEBOX</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: #080d18;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .box {
+            background: #151e30;
+            padding: 35px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 380px;
+        }
+        h2 { text-align: center; }
+        input {
+            width: 100%;
+            padding: 14px;
+            margin: 10px 0;
+            border: 0;
+            border-radius: 7px;
+        }
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #e50914;
+            color: white;
+            border: 0;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .error { color: #ff6565; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>🎬 MOVIEBOX ADMIN</h2>
+
+        {% with messages = get_flashed_messages() %}
+            {% for message in messages %}
+                <p class="error">{{ message }}</p>
+            {% endfor %}
+        {% endwith %}
+
+        <form method="POST">
+            <input name="username"
+                   placeholder="Nom d'utilisateur"
+                   required>
+
+            <input name="password"
+                   type="password"
+                   placeholder="Mot de passe"
+                   required>
+
+            <button type="submit">SE CONNECTER</button>
+        </form>
+    </div>
+</body>
+</html>

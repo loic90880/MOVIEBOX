@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MOVIEBOX Dashboard</title>
+<style>
+body {
+    background:#080d18;
+    color:white;
+    font-family:Arial;
+    padding:20px;
+}
+.card {
+    background:#151e30;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:20px;
+}
+input, textarea {
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    box-sizing:border-box;
+}
+button {
+    padding:12px;
+    background:#e50914;
+    color:white;
+    border:0;
+    cursor:pointer;
+}
+.movie {
+    background:#151e30;
+    padding:15px;
+    margin:10px 0;
+    border-radius:10px;
+}
+a { color:white; }
+</style>
+</head>
+<body>
+
+<h1>🎬 MOVIEBOX ADMIN</h1>
+
+<a href="/admin/logout">Déconnexion</a>
+
+<div class="card">
+    <h2>Tableau de bord</h2>
+    <h3>Films enregistrés : {{ total }}</h3>
+</div>
+
+<div class="card">
+    <h2>Ajouter un film</h2>
+
+    <form action="/admin/add" method="POST">
+        <input name="title" placeholder="Titre du film" required>
+        <textarea name="description"
+                  placeholder="Description"></textarea>
+        <input name="poster" placeholder="URL de l'affiche">
+
+        <button type="submit">Ajouter le film</button>
+    </form>
+</div>
+
+<h2>Liste des films</h2>
+
+{% for movie in movies %}
+<div class="movie">
+    <h3>{{ movie[1] }}</h3>
+    <p>{{ movie[2] }}</p>
+
+    <form action="/admin/delete/{{ movie[0] }}"
+          method="POST"
+          onsubmit="return confirm('Supprimer ce film ?')">
+        <button type="submit">Supprimer</button>
+    </form>
+</div>
+{% endfor %}
+
+</body>
+</html>
