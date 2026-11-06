@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ movie.title }} - MOVIEBOX</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header>
+<a href="/" class="logo">MOVIE<span>BOX</span></a>
+<a href="/">Accueil</a>
+</header>
+
+<main class="movie-detail">
+<img class="detail-poster"
+src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}"
+alt="{{ movie.title }}">
+
+<div class="detail-content">
+<h1>{{ movie.title }}</h1>
+<p>⭐ {{ movie.vote_average|round(1) }}/10</p>
+<p>📅 {{ movie.release_date }}</p>
+
+<h3>Genres</h3>
+{% for genre in movie.genres %}
+<span class="genre">{{ genre.name }}</span>
+{% endfor %}
+
+<h3>Synopsis</h3>
+<p>{{ movie.overview }}</p>
+
+<h3>Acteurs</h3>
+{% for actor in movie.credits.cast[:8] %}
+<span class="genre">{{ actor.name }}</span>
+{% endfor %}
+
+{% for video in movie.videos.results %}
+{% if video.site == "YouTube" and video.type == "Trailer" %}
+<p>
+<a class="btn"
+href="https://www.youtube.com/watch?v={{ video.key }}"
+target="_blank"
+rel="noopener noreferrer">
+▶ Voir la bande-annonce
+</a>
+</p>
+{% break %}
+{% endif %}
+{% endfor %}
+
+</div>
+</main>
+
+</body>
+</html>

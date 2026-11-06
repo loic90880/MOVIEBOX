@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MOVIEBOX</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header>
+    <a href="/" class="logo">MOVIE<span>BOX</span></a>
+
+    <form action="/search" method="GET">
+        <input type="search" name="q" placeholder="Rechercher un film..." required>
+        <button>⌕</button>
+    </form>
+</header>
+
+<section class="hero">
+    <div>
+        <span class="badge">BIENVENUE SUR MOVIEBOX</span>
+        <h1>Découvrez votre prochain film préféré.</h1>
+        <p>Les meilleurs films et les nouveautés du cinéma.</p>
+        <a href="#popular" class="btn">Explorer</a>
+    </div>
+</section>
+
+<section class="section">
+    <h2>🔥 Tendances</h2>
+    <div class="movie-grid">
+        {% for film in trending %}
+        <a href="/movie/{{ film.id }}" class="movie-card">
+            <img src="https://image.tmdb.org/t/p/w500{{ film.poster_path }}" alt="{{ film.title }}">
+            <h3>{{ film.title }}</h3>
+            <p>⭐ {{ film.vote_average|round(1) }}</p>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="section" id="popular">
+    <h2>🎬 Films populaires</h2>
+    <div class="movie-grid">
+        {% for film in popular %}
+        <a href="/movie/{{ film.id }}" class="movie-card">
+            <img src="https://image.tmdb.org/t/p/w500{{ film.poster_path }}" alt="{{ film.title }}">
+            <h3>{{ film.title }}</h3>
+            <p>⭐ {{ film.vote_average|round(1) }}</p>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="section">
+    <h2>🚀 Prochainement</h2>
+    <div class="movie-grid">
+        {% for film in upcoming %}
+        <a href="/movie/{{ film.id }}" class="movie-card">
+            <img src="https://image.tmdb.org/t/p/w500{{ film.poster_path }}" alt="{{ film.title }}">
+            <h3>{{ film.title }}</h3>
+            <p>{{ film.release_date }}</p>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+<footer>
+    <h2>MOVIEBOX</h2>
+    <p>Votre univers cinéma.</p>
+    <small>Données fournies par TMDB.</small>
+</footer>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

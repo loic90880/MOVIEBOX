@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recherche - MOVIEBOX</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header>
+<a href="/" class="logo">MOVIE<span>BOX</span></a>
+
+<form action="/search" method="GET">
+<input name="q" value="{{ query }}" placeholder="Rechercher un film">
+<button>⌕</button>
+</form>
+</header>
+
+<section class="section">
+<h2>Résultats : {{ query }}</h2>
+
+<div class="movie-grid">
+{% for film in results %}
+<a href="/movie/{{ film.id }}" class="movie-card">
+<img src="https://image.tmdb.org/t/p/w500{{ film.poster_path }}"
+alt="{{ film.title }}">
+<h3>{{ film.title }}</h3>
+<p>⭐ {{ film.vote_average|round(1) }}</p>
+</a>
+{% else %}
+<p>Aucun film trouvé.</p>
+{% endfor %}
+</div>
+</section>
+
+</body>
+</html>

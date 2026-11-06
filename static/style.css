@@ -1,0 +1,210 @@
+* {
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body {
+background:#090d18;
+color:white;
+font-family:Arial,sans-serif;
+}
+
+header {
+background:#101727;
+padding:18px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+position:sticky;
+top:0;
+z-index:10;
+}
+
+.logo {
+font-size:25px;
+font-weight:bold;
+color:white;
+text-decoration:none;
+}
+
+.logo span {
+color:#e50935;
+}
+
+header form {
+display:flex;
+}
+
+input {
+background:#202b40;
+border:none;
+padding:12px;
+color:white;
+border-radius:6px 0 0 6px;
+}
+
+button {
+background:#e50935;
+color:white;
+border:none;
+padding:12px;
+cursor:pointer;
+}
+
+.hero {
+min-height:400px;
+display:flex;
+align-items:center;
+padding:50px 7%;
+background:linear-gradient(90deg,#090d18,transparent),
+linear-gradient(0deg,#090d18,transparent);
+}
+
+.hero div {
+max-width:550px;
+}
+
+.hero h1 {
+font-size:45px;
+margin:20px 0;
+}
+
+.hero p {
+color:#bbb;
+margin-bottom:25px;
+}
+
+.badge {
+color:#ff365d;
+}
+
+.btn {
+display:inline-block;
+background:#e50935;
+color:white;
+text-decoration:none;
+padding:13px 22px;
+border-radius:6px;
+}
+
+.section {
+padding:35px 5%;
+}
+
+.section h2 {
+margin-bottom:25px;
+}
+
+.movie-grid {
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(145px,1fr));
+gap:18px;
+}
+
+.movie-card {
+background:#151e30;
+color:white;
+text-decoration:none;
+border-radius:8px;
+overflow:hidden;
+transition:.3s;
+}
+
+.movie-card:hover {
+transform:translateY(-5px);
+}
+
+.movie-card img {
+width:100%;
+aspect-ratio:2/3;
+object-fit:cover;
+}
+
+.movie-card h3,
+.movie-card p {
+padding:8px;
+font-size:14px;
+}
+
+.movie-card p {
+color:#ffbd45;
+}
+
+.movie-detail {
+display:flex;
+gap:30px;
+padding:50px 7%;
+}
+
+.detail-poster {
+width:250px;
+height:fit-content;
+border-radius:10px;
+}
+
+.detail-content {
+max-width:700px;
+}
+
+.detail-content h1 {
+margin-bottom:20px;
+}
+
+.detail-content h3 {
+margin:20px 0 10px;
+}
+
+.detail-content p {
+color:#ccc;
+line-height:1.7;
+margin:12px 0;
+}
+
+.genre {
+display:inline-block;
+background:#202b40;
+padding:8px;
+border-radius:5px;
+margin:4px;
+}
+
+footer {
+text-align:center;
+background:#101727;
+padding:40px;
+color:#aaa;
+}
+
+@media(max-width:650px) {
+header {
+flex-wrap:wrap;
+}
+
+header form {
+width:100%;
+}
+
+header input {
+flex:1;
+min-width:0;
+}
+
+.hero h1 {
+font-size:34px;
+}
+
+.movie-detail {
+flex-direction:column;
+align-items:center;
+}
+
+.detail-poster {
+width:65%;
+}
+
+.movie-grid {
+grid-template-columns:repeat(2,1fr);
+}
+}
