@@ -54,6 +54,8 @@ a { color:white; }
     <h2>Ajouter un film</h2>
 
     <form action="/admin/add" method="POST">
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input name="title" placeholder="Titre du film" required>
         <textarea name="description"
                   placeholder="Description"></textarea>
@@ -73,6 +75,7 @@ a { color:white; }
     <form action="/admin/delete/{{ movie[0] }}"
           method="POST"
           onsubmit="return confirm('Supprimer ce film ?')">
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <button type="submit">Supprimer</button>
     </form>
 </div>
